@@ -5,8 +5,8 @@
 		<title>hirayukiのhello world</title>
 	</head>
 	<body>
-		<p>Hello, {{user}}!</p>
-		<form action="/hello.html" method="post">
+		<p>Hello, {{name}}!</p>
+		<form action="/incoming" method="post">
 			<p>
 				名前：<input type="text" name="name" size="40">
 			</p>
@@ -14,6 +14,5 @@
 				<input type="submit" value="送信">
 			</p>
 		</form>
-	{% if person_you_chose|length > 0 %}<p>Profile: {{person_you_chose}}のプロフィール</p>{% endif %}
 	</body>
 </html>

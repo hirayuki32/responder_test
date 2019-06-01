@@ -5,14 +5,15 @@ api = responder.API()
 
 
 @api.route("/hello.html")
-def hello_html(req, resp):
-    my_name = "hirayuki"
-    resp.html = api.template('index.html', name=my_name)
-
-@api.route("/incoming")
-async def receive_incoming(req, resp):
-    data = await req.media()
-    resp.html = api.template('index.html', name=data)
-    print(data)
+async def hello_html(req, resp):
+    user = "hirayuki"
+    person_you_chose = ""
+    try:
+        data = await req.media()
+        person_you_chose = data["name"]
+    except:
+        pass
+    resp.html = api.template('index.html', user=user,
+                             person_you_chose=person_you_chose)
 
 api.run(port=3000)
